@@ -1,23 +1,12 @@
-# decimal to binary
+# binary to decimal 
 
-number = 35 # 100011
-binary_list = list()
-binary_number = ''
+binary = '101101'
+decimal = 0
 
-while True:
-    rest = int(number % 2)
-    
-    number = number // 2
-    
-    binary_list.append(rest)
-    print(binary_list)
-    
-    if number == 0:
-        break
-    
-for item in reversed(binary_list):
-    print(item)
-    binary_number += str(item)
 
-print(binary_number)
-print('End')
+binary = binary[::-1]
+for i, digit in enumerate(binary):
+    if digit == "1":
+        decimal += 2**i
+
+print(decimal)

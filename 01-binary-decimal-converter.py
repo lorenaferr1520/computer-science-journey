@@ -52,6 +52,18 @@ def decimal_to_binary(number):
     
     return binary_number
 
+# def binary to decimal 
+def binary_to_decimal(number): 
+    binary = str(number)
+    decimal = 0
+
+    binary = binary[::-1]
+    for i, digit in enumerate(binary):
+        if digit == "1":
+            decimal += 2**i
+    
+    return decimal
+
 # menu
 while True:
     menu()
@@ -59,7 +71,7 @@ while True:
         answer = int(input('Answer: '))
     
     except ValueError:
-        print('Select a valid answer.')
+        print(f'{colours["red"]}Select a valid answer.{colours["reset"]}')
         continue
     
     if answer == 3:
@@ -69,23 +81,39 @@ while True:
         try:
             num = int(input("Decimal Number: "))
         except ValueError:
-            print("Enter a valid decimal number.")
+            print(f"{colours['red']}Enter a valid decimal number.{colours['reset']}")
             continue
         
-        print(f'{num} in decimal is {decimal_to_binary(num)}')
+        print(f'{num} in binary is {decimal_to_binary(num)}')
         line()
 
     elif answer == 2:
-        try:
-            num = int(input("Decimal Number: "))
-        except ValueError:
-            print("Enter a valid decimal number.")
-            continue
-        print()
+        while True:
+
+            num = input("Binary Number: ")
+
+            if not num.isnumeric():
+                print(f"{colours['red']}Enter a valid binary number.{colours['reset']}")
+                continue
+
+            valid = True
+
+            for n in num:
+                if n != '1' and n != '0':
+                    valid = False
+                    break
+
+            if not valid:
+                print("Enter a valid binary number.")
+                continue
+
+            print(f'{num} in decimal is {binary_to_decimal(num)}')
+            break
     
     else:
         print('Select a valid answer.')
 
+line()
 print(f'''{colours["yellow"]}End 
   __
 <(o )___
