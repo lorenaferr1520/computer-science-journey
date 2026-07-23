@@ -1,12 +1,9 @@
-# binary to decimal 
+# cathetus
+import math
 
-binary = '101101'
-decimal = 0
+cat_x = float(input('Cathetus x: '))
+hip = float(input('Hypotenuse: '))
 
+cat_y = math.sqrt((hip**2) - (cat_x**2))
 
-binary = binary[::-1]
-for i, digit in enumerate(binary):
-    if digit == "1":
-        decimal += 2**i
-
-print(decimal)
+print(cat_y)
