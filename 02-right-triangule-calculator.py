@@ -58,29 +58,32 @@ while True:
                 continue
                 
             print(f'The hypotenuse of {cat_a} and {cat_b} is: {hip:.1f}')
+            break
         
     elif answer == 2: #Cathetus
-        
-        try:
-            cat_x = float(input('Cathetus x: '))
-            hip = float(input('Hypotenuse: '))
-        except ValueError:
-            print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
-            continue
-        
-        if hip > 0 and cat_x > 0 and hip > cat_x:
-            cat_y = math.sqrt((hip**2) - (cat_x**2))
+        while True:
+            try:
+                cat_x = float(input('Cathetus x: '))
+                hip = float(input('Hypotenuse: '))
+            except ValueError:
+                print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                continue
             
-            print(f'The leg corresponding to a hypotenuse of {hip} and a leg of {cat_x} is: {cat_y:.1f}')
-        
-        else:
-            if hip <= 0:
-                print(f"{colours['red']}The hypotenuse must be greater than 0.{colours['reset']}")
-            elif cat_x <= 0:
-                print(f"{colours['red']}The cathetus must be greater than 0.{colours['reset']}")
+            if hip > 0 and cat_x > 0 and hip > cat_x:
+                cat_y = math.sqrt((hip**2) - (cat_x**2))
+                
+                print(f'The leg corresponding to a hypotenuse of {hip} and a leg of {cat_x} is: {cat_y:.1f}')
+                break
+            
             else:
-                print(f"{colours['red']}The hypotenuse must be greater than the cathetus.{colours['reset']}")
-            continue
+                if hip <= 0:
+                    print(f"{colours['red']}The hypotenuse must be greater than 0.{colours['reset']}")
+                elif cat_x <= 0:
+                    print(f"{colours['red']}The cathetus must be greater than 0.{colours['reset']}")
+                else:
+                    print(f"{colours['red']}The hypotenuse must be greater than the cathetus.{colours['reset']}")
+                continue
+            
     
     elif answer == 3: # Area
         while True: #input base and height with validation
@@ -97,10 +100,10 @@ while True:
                 continue
             
             area = (base * height)/ 2
-            print(f'The area is: {area:.1f}')
+            print(f'The area is: {area:.1f}') # output
             break
     
-    elif answer == 4:
+    elif answer == 4: # Angle
         while True: # input with validation
             try:
                 cat_o = float(input('Opposite leg: '))
@@ -119,3 +122,75 @@ while True:
             
             print(f'The angle is: {deg_angle:.1f}°')
             break
+    
+    elif answer == 5: # Sine
+        while True: # input with validation
+            try:
+                    cat_o = float(input('Opposite leg: '))
+                    hip = float(input('Hypotenuse: '))
+            
+            except ValueError:
+                    print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                    continue
+                            
+            if cat_o <= 0 or hip <= 0:
+                    print(f"{colours['red']}The cathetus and hypotenuse must be greater than 0.{colours['reset']}")
+                    continue
+            if hip <= cat_o:
+                        print(f"{colours['red']}The hypotenuse must be greater than opposite leg.{colours['reset']}")
+                        continue
+                    
+            
+            sin = cat_o / hip
+            print(f'The sine is {sin}') # output
+            break
+
+    elif answer == 6: # Cosine
+        while True: # input with validation
+            try:
+                    cat_a = float(input('Adjacent leg: '))
+                    hip = float(input('Hypotenuse: '))
+            
+            except ValueError:
+                    print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                    continue
+                            
+            if cat_a <= 0 or hip <= 0:
+                    print(f"{colours['red']}The cathetus and hypotenuse must be greater than 0.{colours['reset']}")
+                    continue
+            if hip <= cat_a:
+                        print(f"{colours['red']}The hypotenuse must be greater than adjacent leg.{colours['reset']}")
+                        continue
+                    
+            
+            cos = cat_a / hip
+            print(f'The cosine is {cos}') # output
+            break
+
+    else: # Tangent
+        while True:  # input with validation
+            try:
+                    cat_o = float(input('Opposite leg: '))
+                    cat_a = float(input('Adjacent leg: '))
+
+            
+            except ValueError:
+                    print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                    continue
+                            
+            if cat_a <= 0 or cat_o <= 0:
+                    print(f"{colours['red']}The cathetus must be greater than 0.{colours['reset']}")
+                    continue
+            
+            tan = cat_o / cat_a
+            print(f'The tangent is {tan:.1f}') # output
+            break
+
+# End
+print(f'''{colours["yellow"]}End 
+  __
+<(o )___
+ ( ._> /
+  `---'   quak
+
+{colours["reset"]}''')
