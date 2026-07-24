@@ -1,4 +1,4 @@
-# right triangule calculator
+# right triangle calculator
 import math 
 colours = {
     # Reset
@@ -42,20 +42,24 @@ while True:
     elif answer == 0: # EXIT (break while loop)
         break
     
-    elif answer == 1:
+    elif answer == 1: # Hypotenuse
+        while True:
+            try: 
+                cat_a = float(input('Cathetus A: '))
+                cat_b = float(input('Cathetus B: '))
+            except ValueError:
+                print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                continue
+            
+            hip = math.sqrt((cat_a**2) + (cat_b**2))
+            
+            if cat_a <= 0 or cat_b <= 0:
+                print(f"{colours['red']}The cathetus must be greater than 0.{colours['reset']}")
+                continue
+                
+            print(f'The hypotenuse of {cat_a} and {cat_b} is: {hip:.1f}')
         
-        try: 
-            cat_a = float(input('Cathetus A: '))
-            cat_b = float(input('Cathetus B: '))
-        except ValueError:
-            print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
-            continue
-        
-        hip = math.sqrt((cat_a**2) + (cat_b**2))
-
-        print(f'The hypotenuse of {cat_a} and {cat_b} is: {hip:.1f}')
-    
-    elif answer == 2:
+    elif answer == 2: #Cathetus
         
         try:
             cat_x = float(input('Cathetus x: '))
@@ -70,13 +74,48 @@ while True:
             print(f'The leg corresponding to a hypotenuse of {hip} and a leg of {cat_x} is: {cat_y:.1f}')
         
         else:
-            if hip > 0:
+            if hip <= 0:
                 print(f"{colours['red']}The hypotenuse must be greater than 0.{colours['reset']}")
-            elif cat_x < 0:
+            elif cat_x <= 0:
                 print(f"{colours['red']}The cathetus must be greater than 0.{colours['reset']}")
             else:
                 print(f"{colours['red']}The hypotenuse must be greater than the cathetus.{colours['reset']}")
-            
             continue
+    
+    elif answer == 3: # Area
+        while True: #input base and height with validation
+            try:
+                base = float(input('Base: '))
+                height = float(input('Height: '))
+                
+            except ValueError:
+                print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                continue
             
-        
+            if base <= 0 or height <= 0:
+                print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                continue
+            
+            area = (base * height)/ 2
+            print(f'The area is: {area:.1f}')
+            break
+    
+    elif answer == 4:
+        while True: # input with validation
+            try:
+                cat_o = float(input('Opposite leg: '))
+                cat_a = float(input('Adjacent leg: '))
+            
+            except ValueError:
+                    print(f'{colours["red"]}Enter a valid number.{colours["reset"]}')
+                    continue
+            
+            if cat_o <= 0 or cat_a <= 0:
+                    print(f"{colours['red']}The cathetus must be greater than 0.{colours['reset']}")
+                    continue
+            
+            rad_angle = math.atan(cat_o / cat_a)
+            deg_angle = math.degrees(rad_angle)
+            
+            print(f'The angle is: {deg_angle:.1f}°')
+            break
