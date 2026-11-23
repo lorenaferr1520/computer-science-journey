@@ -1,0 +1,121 @@
+================================================================================
+          CS50P: LECTURE 0 - FUNÇÕES E VARIÁVEIS (RESUMO DIDÁTICO COMPLETO)
+================================================================================
+
+1. INTRODUÇÃO, VS CODE E TERMINAL (CLI)
+--------------------------------------------------------------------------------
+- Editor de Texto vs. IDE: O código em Python é texto simples escrito em um editor.
+  Usa-se o Visual Studio Code (VS Code) como ambiente de desenvolvimento.
+- Arquivos Python: Arquivos de código Python utilizam a extensão .py (ex: hello.py).
+- Interface de Linha de Comando (CLI / Terminal): Permite interagir com o sistema
+  via comandos digitados no terminal:
+  * code hello.py -> Abre/cria o arquivo no VS Code.
+  * python hello.py -> Executa o programa através do intérprete Python.
+- Intérprete do Python: Programa que lê o código de cima para baixo e da esquerda
+  para a direita, traduzindo-o em código binário (0s e 1s) para a CPU executar.
+
+2. PRIMEIROS CONCEITOS E A FUNÇÃO print()
+--------------------------------------------------------------------------------
+- Função (Function): Uma ação ou verbo predeterminado que realiza uma tarefa.
+  Exemplo: print() exibe informações na tela.
+- Argumento (Argument): Dado de entrada passado para a função entre parênteses
+  que altera seu comportamento. Ex: print("hello, world").
+- Efeito Colateral (Side Effect): Efeito visual ou auditivo produzido por uma
+  função, como imprimir um texto na tela.
+- Bugs e Depuração (Debugging):
+  * Bug: Erro no código.
+  * SyntaxError: Erro de sintaxe (ex: esquecer de fechar parênteses em print).
+    O computador executa o código de forma estrita.
+
+3. VARIÁVEIS E A FUNÇÃO input()
+--------------------------------------------------------------------------------
+- Função input(): Solicita uma entrada do usuário. Ex: input("What's your name? ").
+  A função faz a pergunta, aguarda a digitação e retorna o texto digitado.
+- Variáveis (Variables): Contêineres na memória para armazenar valores (textos, números).
+- Operador de Atribuição (=): O sinal de igual (=) atribui o valor da direita
+  para a variável à esquerda.
+  Ex: name = input("What's your name? ")
+- Exibição de Variáveis: Passa-se a variável como argumento para o print:
+  print("hello,", name)
+
+4. COMENTÁRIOS E PSEUDOCÓDIGO
+--------------------------------------------------------------------------------
+- Comentários (#): Notas no código ignoradas pelo intérprete, iniciadas com #.
+  Servem para documentar o código e explicar a intenção do programador.
+  * Comentários de múltiplas linhas podem usar três aspas (''').
+- Pseudocódigo: Escrever a lógica do programa em linguagem humana estruturada
+  (como uma lista de passos) antes de codificar em Python.
+
+5. MANIPULAÇÃO E FORMATAÇÃO EM print()
+--------------------------------------------------------------------------------
+- Concatenação (+): Une strings usando o operador +.
+  Ex: print("hello, " + name) (exige espaço manual).
+- Múltiplos Argumentos: Separar argumentos com vírgula em print("hello,", name)
+  faz com que o print insira um espaço automaticamente entre eles.
+- Parâmetros Nomeados (Named Parameters):
+  * sep: Define o separador entre argumentos em print() (padrão: sep=" ").
+  * end: Define o caractere impresso ao final de print() (padrão: end="\n", nova linha).
+    Ex: print("hello, ", end="") evita a quebra de linha.
+- Caracteres de Escape (\): A barra invertida (\) permite incluir caracteres especiais.
+  Ex: \" permite colocar aspas dentro de uma string delimitada por aspas.
+- f-Strings (Format Strings): Iniciar a string com f (ex: f"hello, {name}") permite
+  interpolação direta de variáveis dentro de chaves {}.
+
+6. MÉTODOS DE STRING (str)
+--------------------------------------------------------------------------------
+- str: Tipo de dado para sequências de texto em Python.
+- Métodos de String (funções associadas ao tipo str):
+  * .strip(): Remove espaços em branco extras do início e do fim da string.
+  * .capitalize(): Capitaliza apenas o primeiro caractere da string.
+  * .title(): Capitaliza a primeira letra de cada palavra.
+  * Encadeamento: name = input("Name: ").strip().title()
+  * .split(): Divide uma string em substrings com base em um delimitador.
+    Ex: first, last = name.split(" ")
+
+7. NÚMEROS E OPERAÇÕES MATEMÁTICAS (int E float)
+--------------------------------------------------------------------------------
+- Inteiros (int): Números inteiros sem parte decimal.
+- Modo Interativo: Executar o comando python no terminal abre o prompt (>>>) para
+  testar código diretamente.
+- Operadores Aritméticos: + (soma), - (subtração), * (multiplicação), / (divisão),
+  % (módulo / resto da divisão).
+- Conversão de Tipos (Type Conversion):
+  input() sempre retorna uma string. Para realizar cálculos, converte-se com:
+  * int(input("What's x? "))
+  * float(input("What's x? "))
+- Aninhamento de Funções: Chamar uma função dentro de outra. Ex: int(input(...)).
+- Ponto Flutuante (float): Números reais com parte decimal.
+- Arredondamento e Formatação:
+  * round(number, ndigits): Arredonda um número. Ex: round(x + y) ou round(z, 2).
+  * f-Strings formatadas:
+    - f"{z:,}": Adiciona separador de milhar por vírgula (ex: 1,000).
+    - f"{z:.2f}": Formata o número com 2 casas decimais.
+
+8. CRIAÇÃO DE FUNÇÕES PERSONALIZADAS (def), ESCOPO E return
+--------------------------------------------------------------------------------
+- Definindo Funções (def):
+  Permite criar novas funções personalizadas usando a palavra-chave def.
+  Ex:
+    def hello(to="world"):
+        print("hello,", to)
+- Valor Padrão (Default Value): Atribuir um valor ao parâmetro na definição
+  (ex: to="world") define um padrão caso o argumento não seja informado.
+- Estruturação com main():
+  Convenção de criar a função principal main() no topo do script e chamá-la no final:
+    def main():
+        name = input("What's your name? ")
+        hello(name)
+
+    def hello(to="world"):
+        print("hello,", to)
+
+    main()
+- Escopo de Variáveis (Scope):
+  Variáveis criadas dentro de uma função pertencem apenas ao escopo dessa função
+  e não podem ser acessadas fora dela sem serem passadas como argumentos ou retornadas.
+- Valores de Retorno (return):
+  A palavra-chave return devolve um valor calculated pela função para quem a chamou.
+  Ex:
+    def square(n):
+        return n ** 2
+================================================================================
